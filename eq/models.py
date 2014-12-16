@@ -11,4 +11,4 @@ class Employees(models.Model):
     moved = models.DateField()
 
     def __str__(self):
-        return self.surname + self.firstname
+        return self.surname + ' ' + self.firstname
