@@ -7,8 +7,8 @@ class Employees(models.Model):
     surname = models.CharField(max_length=50)
     firstname = models.CharField(max_length=50)
     patronymic = models.CharField(max_length=50)
-    hired = models.DateField()
-    moved = models.DateField()
+    hired = models.DateField(default=date.today())
+    moved = models.DateField(default=date.today())
 
     def __str__(self):
         return self.surname + ' ' + self.firstname
@@ -34,10 +34,16 @@ class Proportions(models.Model):
 class TypeEquipments(models.Model):
     group_name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.group_name
+
 
 class Constructions(models.Model):
     group_name = models.ForeignKey(TypeEquipments)
     constructons_name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.constructons_name
 
 
 class Equipments(models.Model):
@@ -48,9 +54,12 @@ class Equipments(models.Model):
     life = models.FloatField(default=0.0)
     #
     construction = models.ForeignKey(Constructions)
-    shockproof = models.NullBooleanField(null=True, default=None)  #противоудар
-    insulation = models.NullBooleanField(null=True, default=None)  #шумоизоляция
+    shockproof = models.NullBooleanField(null=True)  #противоудар
+    insulation = models.NullBooleanField(null=True)  #шумоизоляция
     #TODO: дописать модель
+
+    def __str__(self):
+        return self.model_name
 
 
 class Ownership(models.Model):
@@ -58,3 +67,6 @@ class Ownership(models.Model):
     employees = models.ForeignKey(Employees)
     #code_eq =
     delivery = models.DateField(default=date.today())
+
+    def __str__(self):
+        return self.employees.surname + ' ' + self.equipment.model_name
