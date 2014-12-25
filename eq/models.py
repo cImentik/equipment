@@ -45,6 +45,9 @@ class TypeEquipments(models.Model):
     def __str__(self):
         return self.group_name
 
+    class Meta:
+        ordering = ["group_name"]
+
 
 class Constructions(models.Model):
     group_name = models.ForeignKey(TypeEquipments)

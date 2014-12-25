@@ -4,37 +4,47 @@
 <div class="row">
     <div class="large-12 columns">
      	<div class="panel">
-            {{ employee.surname }} {{ employee.firstname }} {{ employee.patronymic }}
+            <b>ФИО:</b> {{ employee.surname }} {{ employee.firstname }} {{ employee.patronymic }}
             <br/>
-            {{ employee.unit }}
+            <b>Подразделение:</b> {{ employee.unit }}
             <br/>
-            {{ employee.hired }}
+            <b>Принят:</b> {{ employee.hired }}
             <br/>
-            {{ employee.moved }}
+            <b>Перемещён:</b> {{ employee.moved }}
       	</div>
     </div>
 </div>
+
 <dl class="tabs" data-tab>
-    <dd class="active"><a href="#panel1">Tab 1</a></dd>
-    <dd><a href="#panel2">Tab 2</a></dd>
-    <dd><a href="#panel3">Tab 3</a></dd>
-    <dd><a href="#panel4">Tab 4</a></dd>
+{% for type_equipment in type_equipments %}
+    {% if forloop.first %}
+        <dd class="active"><a href="#panel{{ forloop.counter }}">{{ type_equipment.group_name }}</a></dd>
+    {% else %}
+        <dd><a href="#panel{{ forloop.counter }}">{{ type_equipment.group_name }}</a></dd>
+    {% endif %}
+{% endfor %}
 </dl>
+
 <div class="tabs-content">
-    <div class="content active" id="panel1">
-        <div class="callout panel">
-            <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>
-        </div>
+{% for type_equipment in type_equipments %}
+    <div class="content" id="panel{{ forloop.counter }}">
+        p =
     </div>
-    <div class="content" id="panel2">
-        <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-    </div>
-    <div class="content" id="panel3">
-        <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
-    </div>
-    <div class="content" id="panel4">
-        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
-    </div>
+{% endfor %}
+{#    <div class="content active" id="panel1">#}
+{#        <div class="callout panel">#}
+{#            <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="content" id="panel2">#}
+{#        <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>#}
+{#    </div>#}
+{#    <div class="content" id="panel3">#}
+{#        <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>#}
+{#    </div>#}
+{#    <div class="content" id="panel4">#}
+{#        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>#}
+{#    </div>#}
 </div>
-{# {{ ownerships }}  #}
+    {{ ownerships }}
 {% endblock %}
