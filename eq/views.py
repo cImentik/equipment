@@ -11,9 +11,10 @@ def index(request):
 
 
 def cart(request, employe_id):
+    """Учётная карточка работника"""
     ownerships = Ownership.objects.filter(employees_id=employe_id)
     type_equipments = TypeEquipments.objects.all()
-    if len(ownerships) > 0:
+    if ownerships:
         employee = ownerships[0].employees
     else:
         raise Http404

@@ -31,7 +31,7 @@
         <div class="content active" id="panel{{ type_equipment.id }}">
             {% for ownership in ownerships %}
                 {% if ownership.equipment.type_eq.id == type_equipment.id %}
-                    <div class="panel callout large-6 medium-6 columns">
+                    <div class="panel callout medium-6 columns">
                         <b>Конструкция:</b> {{ ownership.equipment.construction }} <br/>
                         <b>Тип:</b> {{ ownership.equipment.type_eq.group_name }}<br/>
                         <b>Модель:</b> {{ ownership.equipment.model_name }}<br/>
