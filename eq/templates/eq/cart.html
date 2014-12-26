@@ -18,20 +18,48 @@
 <dl class="tabs" data-tab>
 {% for type_equipment in type_equipments %}
     {% if forloop.first %}
-        <dd class="active"><a href="#panel{{ forloop.counter }}">{{ type_equipment.group_name }}</a></dd>
+        <dd class="active"><a href="#panel{{ type_equipment.id }}">{{ type_equipment.group_name }}</a></dd>
     {% else %}
-        <dd><a href="#panel{{ forloop.counter }}">{{ type_equipment.group_name }}</a></dd>
+        <dd><a href="#panel{{ type_equipment.id }}">{{ type_equipment.group_name }}</a></dd>
     {% endif %}
 {% endfor %}
 </dl>
 
 <div class="tabs-content">
 {% for type_equipment in type_equipments %}
-    <div class="content" id="panel{{ forloop.counter }}">
-        p =
-    </div>
+    {% if forloop.first %}
+        <div class="content active" id="panel{{ type_equipment.id }}">
+            {% for ownership in ownerships %}
+                {% if ownership.equipment.type_eq.id == type_equipment.id %}
+                    <div class="panel callout large-6 medium-6 columns">
+                        <b>Конструкция:</b> {{ ownership.equipment.construction }} <br/>
+                        <b>Тип:</b> {{ ownership.equipment.type_eq.group_name }}<br/>
+                        <b>Модель:</b> {{ ownership.equipment.model_name }}<br/>
+                        <b>Производитель:</b> {{ ownership.equipment.manufacturer }}<br/>
+                        <b>Цена:</b> {{ ownership.equipment.price }}<br/>
+                        <b>Дата выдачи:</b> {{ ownership.delivery }}<br/>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="content" id="panel{{ type_equipment.id }}">
+            {% for ownership in ownerships %}
+                {% if ownership.equipment.type_eq.id == type_equipment.id %}
+                    <div class="panel callout large-6 medium-6 columns">
+                        <b>Конструкция:</b>  {{ ownership.equipment.construction }}<br/>
+                        <b>Тип:</b>  {{ ownership.equipment.type_eq.group_name }}<br/>
+                        <b>Модель:</b>  {{ ownership.equipment.model_name }}<br/>
+                        <b>Производитель:</b>  {{ ownership.equipment.manufacturer }}<br/>
+                        <b>Цена:</b>  {{ ownership.equipment.price }}<br/>
+                        <b>Дата выдачи:</b>  {{ ownership.delivery }}<br/>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endfor %}
-{#    <div class="content active" id="panel1">#}
+{% comment %}{#    <div class="content active" id="panel1">#}
 {#        <div class="callout panel">#}
 {#            <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>#}
 {#        </div>#}
@@ -44,7 +72,7 @@
 {#    </div>#}
 {#    <div class="content" id="panel4">#}
 {#        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>#}
-{#    </div>#}
+{#    </div>#}{% endcomment %}
 </div>
-    {{ ownerships }}
+{#    {{ ownerships }}#}
 {% endblock %}
