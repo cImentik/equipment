@@ -1,13 +1,20 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.http import HttpResponse
-from eq.models import Ownership, Equipments, Employees, TypeEquipments
+from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units
 
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("OOOps...")
+def index(request, unit_id=1):
+    """Главная страница"""
+    try:
+        unit_name = Units.objects.get(pk=unit_id)
+    except Units.DoesNotExist:
+        raise Http404
+    employees = Employees.objects.filter(unit__id=unit_id)
+    context = {"employees": employees, "unit_name": unit_name}
+    return render(request, 'eq/i_list.html', context)
 
 
 def cart(request, employe_id):

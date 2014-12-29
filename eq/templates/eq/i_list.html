@@ -1,0 +1,7 @@
+{% extends 'main.html' %}
+
+{% block eq %}
+    {% for empoyee in employees %}
+        <p>{{ empoyee }}</p>
+    {% endfor %}
+{% endblock %}
