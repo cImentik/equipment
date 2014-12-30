@@ -14,7 +14,7 @@ class Employees(models.Model):
     surname = models.CharField(max_length=50)
     firstname = models.CharField(max_length=50)
     patronymic = models.CharField(max_length=50)
-    profession = models.CharField(max_length=50)
+    # profession = models.CharField(max_length=50)
     hired = models.DateField(default=date.today())
     moved = models.DateField(default=date.today())
     unit = models.ForeignKey(Units)

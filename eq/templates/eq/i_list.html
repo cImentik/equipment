@@ -13,7 +13,7 @@
                     <div class="row">
                     {% for empoyee in employees %}
                         <div class="medium-6 column">
-                        <a>{{ empoyee.surname }}&nbsp;{{ empoyee.firstname }}&nbsp;{{ empoyee.patronymic }}</a>
+                        <a href="{% url 'cart' empoyee.id %}">{{ empoyee.surname }}&nbsp;{{ empoyee.firstname }}&nbsp;{{ empoyee.patronymic }}</a>
                         <br/>
                         </div>
                         <div class="medium-6 column">
