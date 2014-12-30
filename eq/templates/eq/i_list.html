@@ -1,7 +1,29 @@
 {% extends 'main.html' %}
 
 {% block eq %}
-    {% for empoyee in employees %}
-        <p>{{ empoyee }}</p>
-    {% endfor %}
+    <div class="row">
+        <div class="small-12 text-center panel">
+            <b>Подразделение:</b> {{ unit_name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 medium-6 columns">
+            <div class="panel radius">
+                <div class="large-text-center"><b>Учётные карточки</b></div>
+                <br/>
+                {% for empoyee in employees %}
+                    <a>{{ empoyee }}</a>
+                    <br/>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="large-6 medium-6 columns">
+            <div class="panel radius">
+                <div class="large-text-center"><b>Больше информации</b></div>
+                <br/>
+                <a href="#" class="button expand">Список СЗ на списание</a>
+                <a href="#" class="button expand">Список СЗ на руках</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
