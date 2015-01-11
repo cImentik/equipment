@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Средства защиты</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
+</head>
+<body>
+    <div class="row">
+    <br/><br/><br/>
+        <div class="large-offset-3 large-6 medium-offset-3 medium-6 small-offset-1 small-10">
+            {% if login_error %}
+                <div data-alert class="alert-box alert radius text-center">
+                  <b>Пользователь с такими данными не существует!</b>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-offset-3 large-6 medium-offset-3 medium-6 small-offset-1 small-10">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Авторизация</legend>
+                    <label>Имя пользователя
+                        <input type="text" name="username" placeholder="Введите логин">
+                    </label>
+                    <label>Пароль
+                        <input type="password" name="password" placeholder="Введите пароль">
+                    </label>
+                    <div class="column text-center">
+                        <input class="button radius" type="submit" value="Войти">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script src="{% static "js/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/foundation.min.js" %}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>

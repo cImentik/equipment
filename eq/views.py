@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, render_to_response
 from django.http import Http404
 from django.http import HttpResponse
 from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units
+from django.contrib import auth
+from django.core.context_processors import csrf
 
 # Create your views here.
 
@@ -31,3 +33,20 @@ def cart(request, employe_id):
 
 def empl(request):
     return HttpResponse("Get me employees...")
+
+
+def login(request):
+    context = {}
+    context.update(csrf(request))
+    if request.POST:
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            context['login_error'] = 1
+            return render(request, 'eq/login.html', context)
+    else:
+        return render(request, 'eq/login.html', context)
