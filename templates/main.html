@@ -10,13 +10,13 @@
 </head>
 <body>
 <div class="row">
-    <div class="large-12 columns">
-    <div class="nav-bar right">
-            <a href="#" class="button">Войти</a>
-    </div>
-        <h1>"Средства защиты"</h1>
-        <hr/>
-    </div>
+    <div class="large-12 medium-12 small-12 columns">
+        <div class="nav-bar right">
+                <a href="{% url 'logout' %}" class="button">Выйти</a>
+        </div>
+            <h1>"Средства защиты"</h1>
+            <hr/>
+        </div>
 </div>
 <div class="row">
     {% block eq %}{% endblock %}

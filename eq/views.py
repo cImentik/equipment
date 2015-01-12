@@ -50,3 +50,8 @@ def login(request):
             return render(request, 'eq/login.html', context)
     else:
         return render(request, 'eq/login.html', context)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect ('eq/login')
