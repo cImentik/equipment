@@ -3,9 +3,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
     <title>Средства защиты</title>
     <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/responsive-tables.css" %}"/>
 
 </head>
 <body>
@@ -37,6 +42,7 @@
     </div>
 </footer>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/vendor/responsive-tables.js" %}"></script>
     <script src="{% static "js/foundation.min.js" %}"></script>
     <script>
         $(document).foundation();

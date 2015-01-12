@@ -14,7 +14,7 @@ class Employees(models.Model):
     surname = models.CharField(max_length=50)
     firstname = models.CharField(max_length=50)
     patronymic = models.CharField(max_length=50)
-    # profession = models.CharField(max_length=50)
+    profession = models.CharField(max_length=50, default='')
     hired = models.DateField(default=date.today())
     moved = models.DateField(default=date.today())
     unit = models.ForeignKey(Units)
@@ -85,7 +85,11 @@ class Ownership(models.Model):
     equipment = models.ForeignKey(Equipments)
     employees = models.ForeignKey(Employees)
     #code_eq =
-    delivery = models.DateField(default=date.today())
+    delivery = models.DateField(default=date.today()) #дата получения (выдачи)
+
+    def is_expend(self, equipment_life):
+        # if
+        return True
 
     def __str__(self):
         return self.employees.surname + ' ' + self.equipment.model_name

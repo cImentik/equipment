@@ -5,6 +5,7 @@ from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import permission_required
+from django.db.models import F
 
 # Create your views here.
 
@@ -40,8 +41,10 @@ def cart(request, employe_id):
 
 def expend_list(request, date_expend=date.today()):
     """ Список СЗ на списание """
+    ownerships = Ownership.objects.filter(employees__unit__id=1).filter(date_expend <= F('equipment__life')+F('delivery'))
     context = {
-        'date_expend': date_expend
+        'date_expend': date_expend,
+        'ownerships': ownerships,
     }
     return render_to_response('eq/expends.html', context)
 
