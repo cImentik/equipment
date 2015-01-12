@@ -19,8 +19,11 @@ class Employees(models.Model):
     moved = models.DateField(default=date.today())
     unit = models.ForeignKey(Units)
 
+    def fio(self):
+        return self.surname + ' ' + self.firstname[0] + '. ' + self.patronymic[0] + '.'
+
     def __str__(self):
-        return self.surname + ' ' + self.firstname
+        return self.surname + ' ' + self.firstname[0] + '. ' + self.patronymic[0] + '.'
 
 
 class Anthropometry(models.Model):

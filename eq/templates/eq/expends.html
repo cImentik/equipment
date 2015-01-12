@@ -18,17 +18,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for ownership in ownerships %}
                     <tr>
-                    <td>Иванов И.И.</td>
-                    <td>Очки</td>
-                    <td>СЗ головы</td>
-                    <td>Peltor</td>
+                        <td>{{ ownership.employees.fio }}</td>
+                        <td>{{ ownership.equipment.construction.constructons_name }}</td>
+                        <td>{{ ownership.equipment.type_eq.group_name }}</td>
+                        <td>{{ ownership.equipment.manufacturer }}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
 
-    {{ ownerships }}
 
 {% endblock %}

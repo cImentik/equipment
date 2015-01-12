@@ -39,9 +39,9 @@ def cart(request, employe_id):
     return render(request, 'eq/cart.html', context)
 
 
-def expend_list(request, date_expend=date.today()):
+def expend_list(request, unit_id=1, date_expend=date.today()):
     """ Список СЗ на списание """
-    ownerships = Ownership.objects.filter(employees__unit__id=1).filter(date_expend <= F('equipment__life')+F('delivery'))
+    ownerships = Ownership.objects.filter(employees__unit__id=unit_id)  #.filter((F('equipment__life')+F('delivery'))==date_expend)
     context = {
         'date_expend': date_expend,
         'ownerships': ownerships,
