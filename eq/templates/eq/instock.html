@@ -1,12 +1,11 @@
 {% extends 'main.html' %}
 
 {% block eq %}
-    <div class="row">
+        <div class="row">
         <div class="large-10 large-offset-1 medium-10 medium-offset-1 small-10 small-offset-1 text-center panel">
-            {{ date_expend }}
+
         </div>
-    </div>
-    <div class="row">
+        <div class="row">
         <div class="large-10 large-offset-1 medium-10 medium-offset-1 small-10 small-offset-1">
             <table class="responsive large-12  medium-12  small-12 ">
                 <thead>
@@ -15,7 +14,6 @@
                     <th>Конструкция</th>
                     <th>Тип</th>
                     <th>Производитель</th>
-                    <th>Заканчивается</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,11 +23,11 @@
                         <td>{{ row.construction }}</td>
                         <td>{{ row.type }}</td>
                         <td>{{ row.manufacturer }}</td>
-                        <td>{{ row.expends }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import Http404
-from datetime import date
+from datetime import date, timedelta
 from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units
 from django.contrib import auth
 from django.core.context_processors import csrf
@@ -41,13 +41,42 @@ def cart(request, employe_id):
 
 def expend_list(request, unit_id=1, date_expend=date.today()):
     """ Список СЗ на списание """
-    ownerships = Ownership.objects.filter(employees__unit__id=unit_id)  #.filter((F('equipment__life')+F('delivery'))==date_expend)
+    table_rows = []
+    ownerships = Ownership.objects.filter(employees__unit__id=unit_id).order_by('employees__surname')  #.filter((F('equipment__life')+F('delivery'))==date_expend)
+    for ownership in ownerships:
+        time_life = ownership.delivery+timedelta(days=(ownership.equipment.life*365))
+        if time_life <= date_expend:
+            line = {'fio': ownership.employees.fio(),
+                    'construction': ownership.equipment.construction.constructons_name,
+                    'type': ownership.equipment.type_eq.group_name,
+                    'manufacturer': ownership.equipment.manufacturer,
+                    'expends': time_life,
+                    }
+            table_rows.append(line)
+
     context = {
         'date_expend': date_expend,
-        'ownerships': ownerships,
+        'table': table_rows,
     }
     return render_to_response('eq/expends.html', context)
 
+
+def instock_list(request, unit_id=1):
+    """ Список СЗ находящихся на руках """
+    table_rows = []
+    ownerships = Ownership.objects.filter(employees__unit__id=unit_id).order_by('employees__surname')
+    for ownership in ownerships:
+        line = {'fio': ownership.employees.fio(),
+                'construction': ownership.equipment.construction.constructons_name,
+                'type': ownership.equipment.type_eq.group_name,
+                'manufacturer': ownership.equipment.manufacturer,
+                }
+        table_rows.append(line)
+
+    context = {
+        'table': table_rows,
+    }
+    return render_to_response('eq/instock.html', context)
 
 def login(request):
     context = {}
