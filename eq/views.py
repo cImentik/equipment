@@ -55,7 +55,7 @@ def expend_list(request, unit_id=1, date_expend=date.today()):
             table_rows.append(line)
 
     context = {
-        'date_expend': date_expend,
+        'date_expend': date_expend.strftime('%d.%m.%Y'),
         'table': table_rows,
     }
     return render_to_response('eq/expends.html', context)
@@ -77,6 +77,7 @@ def instock_list(request, unit_id=1):
         'table': table_rows,
     }
     return render_to_response('eq/instock.html', context)
+
 
 def login(request):
     context = {}

@@ -1,9 +1,12 @@
 {% extends 'main.html' %}
+{% load staticfiles %}
 
 {% block eq %}
     <div class="row">
         <div class="large-10 large-offset-1 medium-10 medium-offset-1 small-10 small-offset-1 text-center panel">
-            {{ date_expend }}
+            <div class="large-6 large-offset-3 medium-6 large-offset-3 small-10 small-offset-1">
+            <input type="text" data-date data-date-format="%d.%m.%Y" value="{{ date_expend }}"/>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -32,4 +35,6 @@
             </table>
         </div>
     </div>
+<script type="text/javascript" src="{% static "js/vendor/date.js" %}" ></script>
+
 {% endblock %}
