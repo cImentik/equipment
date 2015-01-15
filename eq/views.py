@@ -61,6 +61,11 @@ def expend_list(request, unit_id=1, date_expend=date.today()):
     return render_to_response('eq/expends.html', context)
 
 
+def expend(request, unit_id, type_id):
+    context = {}
+    return render_to_response('eq/expend.html', context)
+
+
 def instock_list(request, unit_id=1):
     """ Список СЗ находящихся на руках """
     table_rows = []
