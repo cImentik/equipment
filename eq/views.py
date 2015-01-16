@@ -62,6 +62,7 @@ def expend_list(request, unit_id=1, date_expend=date.today()):
 
 
 def expend(request, unit_id, type_id):
+    """ Конкретный тип экипировки"""
     context = {}
     return render_to_response('eq/expend.html', context)
 
