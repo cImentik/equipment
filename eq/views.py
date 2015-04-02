@@ -4,12 +4,13 @@ from datetime import date, timedelta
 from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units
 from django.contrib import auth
 from django.core.context_processors import csrf
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.db.models import F
 
 # Create your views here.
 
-
+@login_required
 def index(request, unit_id=1):
     """Главная страница"""
     try:
