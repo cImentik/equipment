@@ -8,11 +8,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.db.models import F
 
+from django.http import HttpResponse
+
 # Create your views here.
 
-@login_required
-def index(request, unit_id=1):
+#@login_required
+def master(request, unit_id=1):
     """Главная страница"""
+    # if request.user.groups.get().name != 'master':
+    #     return redirect('/')
     try:
         unit_name = Units.objects.get(pk=unit_id)
     except Units.DoesNotExist:
@@ -106,3 +110,38 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect ('eq/login')
+
+
+def main(request):
+    # try:
+    #     user = auth.get_user(request)
+    #     if user.groups.get().name == 'master':
+    #         return redirect('master')
+    #     elif user.groups.get().name == 'safetyeng':
+    #         return redirect('safetyeng')
+    #     elif user.groups.get().name == 'stockman':
+    #         return redirect('stockman')
+    #     elif user.groups.get().name == 'buh':
+    #         return redirect('buh')
+    #     else:
+    #         return redirect('login')
+    # except:
+    #     return redirect('login')
+    return HttpResponse("Hello")
+
+def buh(request):
+    """ Список СЗ находящихся на руках """
+    table_rows = []
+    ownerships = Ownership.objects.all().order_by('employees__surname')
+    for ownership in ownerships:
+        line = {'fio': ownership.employees.fio(),
+                'construction': ownership.equipment.construction.constructons_name,
+                'type': ownership.equipment.type_eq.group_name,
+                'manufacturer': ownership.equipment.manufacturer,
+                }
+        table_rows.append(line)
+
+    context = {
+        'table': table_rows,
+    }
+    return render_to_response('eq/instock.html', context)
