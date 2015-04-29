@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^logout/', views.login, name='logout'),
     #url(r'^main/', views.main, name='main'),
     url(r'^safetyeng/', views.safetyeng, name='safetyeng'),
-    url(r'^stock/', views.safetyeng, name='stock'),
+    url(r'^stock/', views.stock, name='stock'),
 )

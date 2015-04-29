@@ -32,50 +32,72 @@
 {% for type_equipment in type_equipments %}
     {% if forloop.first %}
         <div class="content active" id="panel{{ type_equipment.id }}">
+            <table class="responsive large-12  medium-12  small-12 ">
+            <thead>
+                <tr>
+                <th>Конструкция</th>
+                <th>Тип</th>
+                <th>Модель</th>
+                <th>Производитель</th>
+                <th>Цена</th>
+                <th>Цена</th>
+                </tr>
+            </thead>
             {% for ownership in ownerships %}
                 {% if ownership.equipment.type_eq.id == type_equipment.id %}
-                    <div class="panel callout medium-5 columns">
-                        <b>Конструкция:</b> {{ ownership.equipment.construction }} <br/>
-                        <b>Тип:</b> {{ ownership.equipment.type_eq.group_name }}<br/>
-                        <b>Модель:</b> {{ ownership.equipment.model_name }}<br/>
-                        <b>Производитель:</b> {{ ownership.equipment.manufacturer }}<br/>
-                        <b>Цена:</b> {{ ownership.equipment.price }}<br/>
-                        <b>Дата выдачи:</b> {{ ownership.delivery }}<br/>
-                    </div>
+                <tbody>
+                    <tr>
+                        <td>{{ ownership.equipment.construction }}</td>
+                        <td>{{ ownership.equipment.type_eq.group_name }}</td>
+                        <td>{{ ownership.equipment.model_name }}</td>
+                        <td>{{ ownership.equipment.manufacturer }}</td>
+                        <td>{{ ownership.equipment.price }}</td>
+                        <td>{{ ownership.delivery }}</td>
+                    </tr>
+                </tbody>
+
                 {% endif %}
             {% endfor %}
+            </table>
         </div>
     {% else %}
         <div class="content" id="panel{{ type_equipment.id }}">
+            <table class="responsive large-12  medium-12  small-12 ">
+            <thead>
+                <tr>
+                <th>Конструкция</th>
+                <th>Тип</th>
+                <th>Модель</th>
+                <th>Производитель</th>
+                <th>Цена</th>
+                <th>Цена</th>
+                </tr>
+            </thead>
             {% for ownership in ownerships %}
                 {% if ownership.equipment.type_eq.id == type_equipment.id %}
-                    <div class="panel callout medium-5 columns">
-                        <b>Конструкция:</b>  {{ ownership.equipment.construction }}<br/>
-                        <b>Тип:</b>  {{ ownership.equipment.type_eq.group_name }}<br/>
-                        <b>Модель:</b>  {{ ownership.equipment.model_name }}<br/>
-                        <b>Производитель:</b>  {{ ownership.equipment.manufacturer }}<br/>
-                        <b>Цена:</b>  {{ ownership.equipment.price }}<br/>
-                        <b>Дата выдачи:</b>  {{ ownership.delivery }}<br/>
-                    </div>
+{#                    <div class="panel callout medium-5 columns">#}
+{#                        <b>Конструкция:</b>  {{ ownership.equipment.construction }}<br/>#}
+{#                        <b>Тип:</b>  {{ ownership.equipment.type_eq.group_name }}<br/>#}
+{#                        <b>Модель:</b>  {{ ownership.equipment.model_name }}<br/>#}
+{#                        <b>Производитель:</b>  {{ ownership.equipment.manufacturer }}<br/>#}
+{#                        <b>Цена:</b>  {{ ownership.equipment.price }}<br/>#}
+{#                        <b>Дата выдачи:</b>  {{ ownership.delivery }}<br/>#}
+{#                    </div>#}
+                    <tbody>
+                    <tr>
+                        <td>{{ ownership.equipment.construction }}</td>
+                        <td>{{ ownership.equipment.type_eq.group_name }}</td>
+                        <td>{{ ownership.equipment.model_name }}</td>
+                        <td>{{ ownership.equipment.manufacturer }}</td>
+                        <td>{{ ownership.equipment.price }}</td>
+                        <td>{{ ownership.delivery }}</td>
+                    </tr>
+                    </tbody>
                 {% endif %}
             {% endfor %}
+            </table>
         </div>
     {% endif %}
 {% endfor %}
-{% comment %}{#    <div class="content active" id="panel1">#}
-{#        <div class="callout panel">#}
-{#            <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>#}
-{#        </div>#}
-{#    </div>#}
-{#    <div class="content" id="panel2">#}
-{#        <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>#}
-{#    </div>#}
-{#    <div class="content" id="panel3">#}
-{#        <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>#}
-{#    </div>#}
-{#    <div class="content" id="panel4">#}
-{#        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>#}
-{#    </div>#}{% endcomment %}
 </div>
-{#    {{ ownerships }}#}
 {% endblock %}
