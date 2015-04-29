@@ -109,7 +109,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect ('eq/login')
+    return redirect('eq/login')
 
 
 def main(request):
@@ -129,19 +129,22 @@ def main(request):
     #     return redirect('login')
     return HttpResponse("Hello")
 
-def buh(request):
-    """ Список СЗ находящихся на руках """
-    table_rows = []
-    ownerships = Ownership.objects.all().order_by('employees__surname')
-    for ownership in ownerships:
-        line = {'fio': ownership.employees.fio(),
-                'construction': ownership.equipment.construction.constructons_name,
-                'type': ownership.equipment.type_eq.group_name,
-                'manufacturer': ownership.equipment.manufacturer,
-                }
-        table_rows.append(line)
 
-    context = {
-        'table': table_rows,
-    }
-    return render_to_response('eq/instock.html', context)
+def safetyeng(request):
+    """Главная страница"""
+    # if request.user.groups.get().name != 'master':
+    #     return redirect('/')
+    unit_name = "Инженер по ТБ"
+    employees = Employees.objects.all()
+    context = {"employees": employees, "unit_name": unit_name}
+    return render(request, 'eq/i_list.html', context)
+
+
+def stock(request):
+    """Главная страница"""
+    # if request.user.groups.get().name != 'master':
+    #     return redirect('/')
+    unit_name = "Склад"
+    employees = Employees.objects.all()
+    context = {"employees": employees, "unit_name": unit_name}
+    return render(request, 'eq/s_list.html', context)

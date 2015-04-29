@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^login/', views.login, name='login'),
     url(r'^logout/', views.login, name='logout'),
     #url(r'^main/', views.main, name='main'),
-    url(r'^buh/', views.buh, name='buh'),
+    url(r'^safetyeng/', views.safetyeng, name='safetyeng'),
+    url(r'^stock/', views.safetyeng, name='stock'),
 )
