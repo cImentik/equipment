@@ -131,7 +131,7 @@ def main(request):
 
 
 def safetyeng(request):
-    """Главная страница"""
+    """Главная страница инженера по ТБ"""
     # if request.user.groups.get().name != 'master':
     #     return redirect('/')
     unit_name = "Инженер по ТБ"
@@ -141,10 +141,14 @@ def safetyeng(request):
 
 
 def stock(request):
-    """Главная страница"""
+    """Главная страница кладовщика"""
     # if request.user.groups.get().name != 'master':
     #     return redirect('/')
     unit_name = "Склад"
     employees = Employees.objects.all()
     context = {"employees": employees, "unit_name": unit_name}
     return render(request, 'eq/s_list.html', context)
+
+
+def addstaff(request):
+    return None
