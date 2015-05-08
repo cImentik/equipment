@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     #url(r'^main/', views.main, name='main'),
     url(r'^safetyeng/', views.safetyeng, name='safetyeng'),
     url(r'^stock/', views.stock, name='stock'),
-    url(r'^addstaff/', views.addstaff, name='addstaff'),
+    url(r'^addempl/', views.addempl, name='addempl'),
 )

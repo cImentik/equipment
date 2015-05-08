@@ -150,5 +150,6 @@ def stock(request):
     return render(request, 'eq/s_list.html', context)
 
 
-def addstaff(request):
-    return None
+def addempl(request):
+    context = {}
+    return render(request, 'eq/addempl.html', context)
