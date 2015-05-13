@@ -152,6 +152,12 @@ def stock(request):
 
 
 def addempl(request):
-    addForm = AddEmployeeForm()
-    context = {"addForm": addForm}
-    return render(request, 'eq/addempl.html', context)
+    if request.method == 'POST':
+        addForm = AddEmployeeForm(request.POST)
+        if addForm.is_valid():
+            addForm.save()
+            return redirect('/')
+    else:
+        addForm = AddEmployeeForm()
+        context = {"addForm": addForm}
+        return render(request, 'eq/addempl.html', context)
