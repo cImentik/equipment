@@ -7,6 +7,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.db.models import F
+from eq.forms import AddEmployeeForm
 
 from django.http import HttpResponse
 
@@ -151,5 +152,6 @@ def stock(request):
 
 
 def addempl(request):
-    context = {}
+    addForm = AddEmployeeForm()
+    context = {"addForm": addForm}
     return render(request, 'eq/addempl.html', context)
