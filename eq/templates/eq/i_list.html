@@ -10,17 +10,17 @@
         <div class="large-6 medium-6 columns">
             <div class="panel radius">
                 <div class="large-text-center"><b>Учётные карточки</b></div><br/>
-                    <div class="row">
-                    {% for empoyee in employees %}
-                        <div class="medium-7 column">
-                        <a href="{% url 'cart' empoyee.id %}">{{ empoyee.surname }}&nbsp;{{ empoyee.firstname }}&nbsp;{{ empoyee.patronymic }}</a>
-                        <br/>
-                        </div>
-                        <div class="medium-5 column">
-                            {{ empoyee.hired }}
-                        </div>
-                    {% endfor %}
+                <div class="row">
+                {% for empoyee in employees %}
+                    <div class="medium-7 column">
+                    <a href="{% url 'cart' empoyee.id %}">{{ empoyee.surname }}&nbsp;{{ empoyee.firstname }}&nbsp;{{ empoyee.patronymic }}</a>
+                    <br/>
                     </div>
+                    <div class="medium-5 column">
+                        {{ empoyee.hired }}
+                    </div>
+                {% endfor %}
+                </div>
             </div>
         </div>
         <div class="large-6 medium-6 columns">
@@ -30,6 +30,8 @@
                 <a href="{% url 'expend_list' %}" class="button expand">Список СЗ на списание</a>
                 <a href="{% url 'instock_list' %}" class="button expand">Список СЗ на руках</a>
                 <a href="{% url 'addempl' %}" class="button expand">Добавить работника</a>
+                <a href="{% url 'delempl' %}" class="button expand">Удалить работника</a>
+                <a href="{% url 'editempl' %}" class="button expand">Редактировать работника</a>
             </div>
         </div>
     </div>

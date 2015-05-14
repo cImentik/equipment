@@ -161,3 +161,21 @@ def addempl(request):
         addForm = AddEmployeeForm()
         context = {"addForm": addForm}
         return render(request, 'eq/addempl.html', context)
+
+
+def delempl(request):
+    return None
+
+
+def editempl(request):
+    return None
+
+
+def cartprint(request):
+    return None
+
+
+def balance(request):
+    equipments = Equipments.objects.all()
+    context = {"equipments": equipments}
+    return render(request, 'eq/stocklist.html', context)
