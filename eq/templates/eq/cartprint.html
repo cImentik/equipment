@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ employe }}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/foundation.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/responsive-tables.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/foundation-icons/foundation-icons.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/foundation_calendar.css" %}" />
+</head>
+<body>
+<div class="row text-center">
+    <br/>
+    <br/>
+    <br/>
+    ЛИЧНАЯ КАРТОЧКА №______ учёта выдачи СИЗ
+    <br/>
+    <br/>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        <span>Фамилия: {{ employe.surname }}</span><br/>
+        <span>Имя: {{ employe.firstname }}</span><br/>
+        <span>Отчество: {{ employe.patronymic }}</span><br/>
+        <span>Табельный номер: {{ employe.tabel_num }}</span><br/>
+        <span>Структурное подразделение: {{ employe.unit }}</span><br/>
+        <span>Дата поступления на работу: {{ employe.hired }}</span><br/>
+        <span>Дата перемещения: {{ employe.moved }}</span><br/>
+    </div>
+    <div class="large-6 columns">
+        <span>Пол: ______________</span><br/>
+        <span>Рост: ________________</span><br/>
+        <span>Размер: </span><br/>
+        <span>одежды: _______________</span><br/>
+        <span>обуви: ________________</span><br/>
+        <span>головного убора: ________________</span><br/>
+        <span>противогаза: ________________</span><br/>
+        <span>респиратора: ________________</span><br/>
+        <span>рукавиц: ________________</span><br/>
+        <span>перчаток: ________________</span><br/>
+    </div>
+    <div class="row">
+        <br/>
+        Предусмотрена выдача _______________________________________________________________________________________
+        <br/>
+        <br/>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <table class="large-12  medium-12  small-12 ">
+            <thead>
+                <tr>
+                <th><b>Наименование СИЗ</b></th>
+                <th><b>Пункт типовых<br/> норм</b></th>
+                <th>Ед. <br>измерения</th>
+                <th>Выдано</th>
+                </tr>
+            </thead>
+            {% for ownership in ownerships %}
+                <tbody>
+                    <tr>
+                        <td>{{ ownership.equipment.model_name }}</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ ownership.delivery }}</td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+            </table>
+    </div>
+</div>
+</body>
+</html>

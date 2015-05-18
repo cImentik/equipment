@@ -2,4 +2,31 @@
 
 {% block eq %}
 {{ equipments }}
+    <div class="content active" id="panel{{ type_equipment.id }}">
+            <table class="responsive large-12  medium-12  small-12 ">
+            <thead>
+                <tr>
+                <th>Конструкция</th>
+                <th>Тип</th>
+                <th>Модель</th>
+                <th>Производитель</th>
+                <th>Цена</th>
+                <th>Штук</th>
+                </tr>
+            </thead>
+            {% for equipment in equipments %}
+                <tbody>
+                    <tr>
+                        <td>{{ equipment.construction }}</td>
+                        <td>{{ equipment.type_eq.group_name }}</td>
+                        <td>{{ equipment.model_name }}</td>
+                        <td>{{ equipment.manufacturer }}</td>
+                        <td>{{ equipment.price }}</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+
+            {% endfor %}
+            </table>
+        </div>
 {% endblock %}

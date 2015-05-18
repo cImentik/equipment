@@ -41,7 +41,8 @@ def cart(request, employe_id):
     context = {
         'ownerships': ownerships,
         'employee': employee,
-        'type_equipments': type_equipments}
+        'type_equipments': type_equipments,
+        'employe_id': employe_id}
     return render(request, 'eq/cart.html', context)
 
 
@@ -171,8 +172,17 @@ def editempl(request):
     return None
 
 
-def cartprint(request):
-    return None
+def cartprint(request, employe_id):
+    #assert False
+    # try:
+    #     unit_name = Units.objects.get(pk=unit_id)
+    # except Units.DoesNotExist:
+    #     raise Http404
+    employe = Employees.objects.get(pk=employe_id)
+    ownerships = Ownership.objects.filter(employees_id=employe_id)
+    context = {"employe": employe,
+               "ownerships": ownerships}
+    return render(request, 'eq/cartprint.html', context)
 
 
 def balance(request):
