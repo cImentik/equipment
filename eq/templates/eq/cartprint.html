@@ -13,45 +13,30 @@
 </head>
 <body>
 <div class="row text-center">
+<div class="row text-center">
     <br/>
     <br/>
-    <br/>
-    ЛИЧНАЯ КАРТОЧКА №______ учёта выдачи СИЗ
+    <b>ЛИЧНАЯ КАРТОЧКА №______ учёта выдачи СИЗ</b>
     <br/>
     <br/>
 </div>
-<div class="row">
-    <div class="large-6 columns">
-        <span>Фамилия: {{ employe.surname }}</span><br/>
-        <span>Имя: {{ employe.firstname }}</span><br/>
-        <span>Отчество: {{ employe.patronymic }}</span><br/>
-        <span>Табельный номер: {{ employe.tabel_num }}</span><br/>
-        <span>Структурное подразделение: {{ employe.unit }}</span><br/>
-        <span>Дата поступления на работу: {{ employe.hired }}</span><br/>
-        <span>Дата перемещения: {{ employe.moved }}</span><br/>
-    </div>
-    <div class="large-6 columns">
-        <span>Пол: ______________</span><br/>
-        <span>Рост: ________________</span><br/>
-        <span>Размер: </span><br/>
-        <span>одежды: _______________</span><br/>
-        <span>обуви: ________________</span><br/>
-        <span>головного убора: ________________</span><br/>
-        <span>противогаза: ________________</span><br/>
-        <span>респиратора: ________________</span><br/>
-        <span>рукавиц: ________________</span><br/>
-        <span>перчаток: ________________</span><br/>
-    </div>
-    <div class="row">
-        <br/>
-        Предусмотрена выдача _______________________________________________________________________________________
-        <br/>
-        <br/>
-    </div>
+    <table class="large-12  medium-12  small-12">
+        <tr><td>Фамилия: {{ employe.surname }}</td><td>Пол: ______________</td></tr>
+        <tr><td>Имя: {{ employe.firstname }}</td><td>Рост: ________________</td></tr>
+        <tr><td>Отчество: {{ employe.patronymic }}</td><td>Размер одежды: _______________</td></tr>
+        <tr><td>Табельный номер: {{ employe.tabel_num }}</td><td>Размер обуви: ________________</td></tr>
+        <tr><td>Структурное подразделение: {{ employe.unit }}</td><td>головного убора: ________________</td></tr>
+        <tr><td>Дата поступления на работу: {{ employe.hired }}</td><td>противогаза: ________________</td></tr>
+        <tr><td>Дата перемещения: {{ employe.moved }}</td><td>респиратора: ________________</td></tr>
+        <tr><td></td><td>рукавиц: ________________</td></tr>
+        <tr><td></td><td>перчаток: ________________</td></tr>
+        <tr>
+            <td colspan="2" align="center">Предусмотрена выдача __________________________________________________________________</td>
+        </tr>
+    </table>
 </div>
-<div class="row">
-    <div class="large-12 columns">
-        <table class="large-12  medium-12  small-12 ">
+<div class="row text-center">
+        <table border="1" class="large-12  medium-12  small-12">
             <thead>
                 <tr>
                 <th><b>Наименование СИЗ</b></th>
@@ -71,7 +56,9 @@
                 </tbody>
             {% endfor %}
             </table>
-    </div>
+</div>
+<div class="row text-center">
+    Руководитель структурного подразделения ___________________________________ (Ф.И.О)
 </div>
 </body>
 </html>

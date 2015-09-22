@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
 from eq.models import Employees
+from eq.models import Equipments
 
 
 class AddEmployeeForm(ModelForm):
     class Meta:
         model = Employees
+        fields = '__all__'
+
+class AddEquipmentForm(ModelForm):
+    class Meta:
+        model = Equipments
         fields = '__all__'
 
 

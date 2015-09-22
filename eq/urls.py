@@ -21,4 +21,6 @@ urlpatterns = patterns('',
     # url(r'^deleq/', views.addeq, name='addeq'),
     # url(r'^addeq/', views.addeq, name='addeq'),
     url(r'^balance/', views.balance, name='balance'),
+    url(r'^addeq/', views.addeq, name='addeq'),
+    url(r'^staff/', views.staff, name='staff'),
 )

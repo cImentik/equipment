@@ -7,7 +7,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.db.models import F
-from eq.forms import AddEmployeeForm
+from eq.forms import AddEmployeeForm, AddEquipmentForm
 
 from django.http import HttpResponse
 
@@ -189,3 +189,15 @@ def balance(request):
     equipments = Equipments.objects.all()
     context = {"equipments": equipments}
     return render(request, 'eq/stocklist.html', context)
+
+
+def addeq(request):
+    if request.method == 'POST':
+        addItemForm = AddEquipmentForm(request.POST)
+        if addItemForm.is_valid():
+            addItemForm.save()
+            return redirect('/balance/')
+    else:
+        addItemForm = AddEquipmentForm()
+        context = {"addItemForm": addItemForm}
+        return render(request, 'eq/additem.html', context)

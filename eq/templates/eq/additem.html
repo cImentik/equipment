@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block eq %}
+    <div class="row">
+    <br/><br/><br/>
+        <div class="large-offset-3 large-6 medium-offset-3 medium-6 small-offset-1 small-10">
+            {% if login_error %}
+                <div data-alert class="alert-box alert radius text-center">
+                  <b>Пользователь с такими данными не существует!</b>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-offset-3 large-6 medium-offset-3 medium-6 small-offset-1 small-10">
+            <form action="#" method="post">
+                {% csrf_token %}
+                {{ addItemForm }}
+                <input value="Добавить" type="submit" class="button expand">
+            </form>
+        </div>
+    </div>
+{% endblock %}
