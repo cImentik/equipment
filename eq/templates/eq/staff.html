@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% block eq %}
+    <div class="row">
+        <div class="small-12 text-center panel">
+            <b>Подразделение:</b> {{ unit_name }}
+        </div>
+    </div>
+    <div class="row">
+{#        <div class="large-6 medium-6 columns">#}
+{#            <div class="panel radius">#}
+{#                <div class="large-text-center"><b>Работники:</b></div><br/>#}
+{#                <div class="row">#}
+{#                {% for empoyee in employees %}#}
+{#                    <div class="medium-7 column">#}
+{#                    <a href="{% url 'cart' empoyee.id %}">{{ empoyee.surname }}&nbsp;{{ empoyee.firstname }}&nbsp;{{ empoyee.patronymic }}</a>#}
+{#                    <br/>#}
+{#                    </div>#}
+{#                    <div class="medium-5 column">#}
+{#                        {{ empoyee.hired }}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        <div class="large-6 medium-6 columns">
+            <div class="panel radius">
+                <div class="large-text-center"><b>Подразделения:</b></div><br/>
+                <div class="row text-center">
+                {% for unit in units %}
+                    <p><a href="{% url 'cart' unit.id %}">{{ unit.unit }}</a> &nbsp; <a href="#">Удалить</a> <a href="#">Ред.</a></p>
+                {% endfor %}
+                </div>
+
+{#                <a href="{% url 'unit_list' %}" class="button expand">Список подразделений</a>#}
+{#                <a href="{% url 'addempl' %}" class="button expand">Добавить работника</a>#}
+{#                <a href="{% url 'addunit' %}" class="button expand">Добавить подразделение</a>#}
+{#                <a href="{% url 'delempl' %}" class="button expand">Удалить работника</a>#}
+{#                <a href="{% url 'editempl' %}" class="button expand">Редактировать работника</a>#}
+            </div>
+        </div>
+        <div class="large-6 medium-6 columns">
+            <div class="panel radius">
+                <div class="large-text-center"><b>Больше информации</b></div>
+                <br/>
+                <a href="{% url 'addunit' %}" class="button expand">Добавить подразделение</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

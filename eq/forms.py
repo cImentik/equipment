@@ -2,6 +2,7 @@
 from django.forms import ModelForm
 from eq.models import Employees
 from eq.models import Equipments
+from eq.models import Units
 
 
 class AddEmployeeForm(ModelForm):
@@ -12,6 +13,11 @@ class AddEmployeeForm(ModelForm):
 class AddEquipmentForm(ModelForm):
     class Meta:
         model = Equipments
+        fields = '__all__'
+
+class AddUnitForm(ModelForm):
+    class Meta:
+        model = Units
         fields = '__all__'
 
 

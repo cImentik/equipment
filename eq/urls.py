@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 from eq import views
 
 urlpatterns = patterns('',
-    url(r'^$', views.master, name='mater'),
+    url(r'^$', views.master, name='master'),
     url(r'^cart/(?P<employe_id>\d+)/', views.cart, name='cart'),
     url(r'^expends/', views.expend_list, name='expend_list'),
     url(r'^expend/', views.expend, name='expend'),
@@ -17,10 +17,8 @@ urlpatterns = patterns('',
     url(r'^delempl/', views.delempl, name='delempl'),
     url(r'^editempl/', views.editempl, name='editempl'),
     url(r'^cartprint/(?P<employe_id>\d+)/', views.cartprint, name='cartprint'),
-    # url(r'^addeq/', views.addeq, name='addeq'),
-    # url(r'^deleq/', views.addeq, name='addeq'),
-    # url(r'^addeq/', views.addeq, name='addeq'),
     url(r'^balance/', views.balance, name='balance'),
     url(r'^addeq/', views.addeq, name='addeq'),
     url(r'^staff/', views.staff, name='staff'),
+    url(r'^addunit/', views.addunit, name='addunit'),
 )

@@ -7,7 +7,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.db.models import F
-from eq.forms import AddEmployeeForm, AddEquipmentForm
+from eq.forms import AddEmployeeForm, AddEquipmentForm, AddUnitForm
 
 from django.http import HttpResponse
 
@@ -201,3 +201,25 @@ def addeq(request):
         addItemForm = AddEquipmentForm()
         context = {"addItemForm": addItemForm}
         return render(request, 'eq/additem.html', context)
+
+
+def staff(request):
+    """Главная страница кадров"""
+    # if request.user.groups.get().name != 'master':
+    #     return redirect('/')
+    unit_name = "Отдел кадров"
+    employees = Employees.objects.all()
+    units = Units.objects.all()
+    context = {"employees": employees, "unit_name": unit_name, "units":units}
+    return render(request, 'eq/staff.html', context)
+
+def addunit(request):
+    if request.method == 'POST':
+        addUnitForm = AddUnitForm(request.POST)
+        if addUnitForm.is_valid():
+            addUnitForm.save()
+            return redirect('/staff/')
+    else:
+        addUnitForm = AddUnitForm()
+        context = {"addUnitForm": addUnitForm}
+        return render(request, 'eq/addunit.html', context)
