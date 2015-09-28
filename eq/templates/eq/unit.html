@@ -1,7 +1,8 @@
 {% extends 'main.html' %}
 
 {% block eq %}
-    <div class="row">
+    {{ employees }}
+        <div class="row">
         <div class="small-12 text-center panel">
             <b>Подразделение:</b> {{ unit_name }}
         </div>
@@ -9,14 +10,14 @@
     <div class="row">
         <div class="large-6 medium-6 columns">
             <div class="panel radius">
-                <div class="large-text-center"><b>Подразделения:</b></div><br/>
+                <div class="large-text-center"><b>Работники:</b></div><br/>
                 <div class="row text-right">
                 <div class=" large-10 large-offset-1 medium-10 medium-offset-1 smoll-10 small-offset-1 columns">
-                {% for unit in units %}
+                {% for employe in employees %}
                     {% load staticfiles %}
-                    <p><a href="{% url 'unit' unit.id %}">{{ unit.unit }}</a> &nbsp;
-                       <a href="{% url 'delunit' unit.id%}"><img src="{% static "img/del.png" %}" alt="Ред."/></a>&nbsp;
-                       <a href="{% url 'editunit' unit.id%}"><img src="{% static "img/edit.png" %}" alt="Уд."/></a></p>
+                    <p>{{ employe }} &nbsp;
+                        <a href="{% url 'delempl' %}"><img src="{% static "img/del.png" %}" alt="Ред."/></a>&nbsp;
+                        <a href="{% url 'editempl' %}"><img src="{% static "img/edit.png" %}" alt="Уд."/></a></p>
                 {% endfor %}
                 </div>
                 </div>
@@ -26,7 +27,7 @@
             <div class="panel radius">
                 <div class="large-text-center"><b>Больше информации</b></div>
                 <br/>
-                <a href="{% url 'addunit' %}" class="button expand">Добавить подразделение</a>
+                <a href="{% url 'addempl' %}" class="button expand">Добавить работника</a>
             </div>
         </div>
     </div>

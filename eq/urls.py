@@ -21,4 +21,9 @@ urlpatterns = patterns('',
     url(r'^addeq/', views.addeq, name='addeq'),
     url(r'^staff/', views.staff, name='staff'),
     url(r'^addunit/', views.addunit, name='addunit'),
+    url(r'^delunit/(?P<unit_id>\d+)/', views.addunit, name='delunit'),
+    url(r'^editunit/(?P<unit_id>\d+)/', views.addunit, name='editunit'),
+    url(r'^unit/(?P<unit_id>\d+)/', views.unit, name='unit'),
+    #delempl
+    #editempl
 )

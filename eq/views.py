@@ -208,9 +208,9 @@ def staff(request):
     # if request.user.groups.get().name != 'master':
     #     return redirect('/')
     unit_name = "Отдел кадров"
-    employees = Employees.objects.all()
+    #employees = Employees.objects.all()
     units = Units.objects.all()
-    context = {"employees": employees, "unit_name": unit_name, "units":units}
+    context = {"unit_name": unit_name, "units": units}
     return render(request, 'eq/staff.html', context)
 
 
@@ -224,3 +224,10 @@ def addunit(request):
         addUnitForm = AddUnitForm()
         context = {"addUnitForm": addUnitForm}
         return render(request, 'eq/addunit.html', context)
+
+
+def unit(request, unit_id):
+    unit_name = Units.objects.get(pk=unit_id)
+    employees = Employees.objects.filter(unit_id=unit_id)
+    context = {"employees": employees, "unit_name": unit_name.unit}
+    return render(request, 'eq/unit.html', context)

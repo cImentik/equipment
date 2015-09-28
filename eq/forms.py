@@ -10,10 +10,12 @@ class AddEmployeeForm(ModelForm):
         model = Employees
         fields = '__all__'
 
+
 class AddEquipmentForm(ModelForm):
     class Meta:
         model = Equipments
         fields = '__all__'
+
 
 class AddUnitForm(ModelForm):
     class Meta:
