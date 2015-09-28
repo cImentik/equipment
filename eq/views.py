@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import Http404
 from datetime import date, timedelta
-from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units
+from eq.models import Ownership, Equipments, Employees, TypeEquipments, Units, Professions
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required

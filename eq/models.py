@@ -30,6 +30,7 @@ class Employees(models.Model):
     firstname = models.CharField('имя', max_length=50)
     patronymic = models.CharField('отчество', max_length=50)
     #profession = models.CharField('должность', max_length=50, default='')
+    profession = models.ForeignKey(Professions)
     tabel_num = models.CharField('табельный номер', max_length=10, default='')
     hired = models.DateField('принят', default=date.today())
     moved = models.DateField('перемещён', default=date.today())
