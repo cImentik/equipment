@@ -213,6 +213,7 @@ def staff(request):
     context = {"employees": employees, "unit_name": unit_name, "units":units}
     return render(request, 'eq/staff.html', context)
 
+
 def addunit(request):
     if request.method == 'POST':
         addUnitForm = AddUnitForm(request.POST)

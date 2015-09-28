@@ -3,6 +3,17 @@ from datetime import date
 from django.db import models
 
 
+class Professions(models.Model):
+    name = models.CharField('должность', max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Должность"
+        verbose_name_plural = "Должности"
+
+
 class Units(models.Model):
     unit = models.CharField('отдел', max_length=50, blank=True, null=True)
 
@@ -18,7 +29,7 @@ class Employees(models.Model):
     surname = models.CharField('фамилия', max_length=50)
     firstname = models.CharField('имя', max_length=50)
     patronymic = models.CharField('отчество', max_length=50)
-    profession = models.CharField('должность', max_length=50, default='')
+    #profession = models.CharField('должность', max_length=50, default='')
     tabel_num = models.CharField('табельный номер', max_length=10, default='')
     hired = models.DateField('принят', default=date.today())
     moved = models.DateField('перемещён', default=date.today())
