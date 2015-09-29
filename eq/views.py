@@ -13,6 +13,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+
 #@login_required
 def master(request, unit_id=1):
     """Главная страница"""
@@ -137,9 +138,22 @@ def safetyeng(request):
     # if request.user.groups.get().name != 'master':
     #     return redirect('/')
     unit_name = "Инженер по ТБ"
-    employees = Employees.objects.all()
-    context = {"employees": employees, "unit_name": unit_name}
+    #employees = Employees.objects.all()
+    units = Units.objects.all()
+    #employees = Employees.objects.filter(unit_id=unit_id)
+    context = {"unit_name": unit_name, "units": units}
     return render(request, 'eq/i_list.html', context)
+
+
+def sunit(request, unit_id):
+    unit_name = Units.objects.get(pk=unit_id)
+    employees = Employees.objects.filter(unit_id=unit_id)
+    context = {"employees": employees, "unit_name": unit_name.unit}
+    return render(request, 'eq/sunit.html', context)
+
+
+def scart(request, empl_id):
+    return None
 
 
 def stock(request):
@@ -224,6 +238,14 @@ def addunit(request):
         addUnitForm = AddUnitForm()
         context = {"addUnitForm": addUnitForm}
         return render(request, 'eq/addunit.html', context)
+
+
+def delunit(request):
+    return None
+
+
+def editunit(request):
+    return None
 
 
 def unit(request, unit_id):

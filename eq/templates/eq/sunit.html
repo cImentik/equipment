@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block eq %}
+        <div class="row">
+        <div class="small-12 text-center panel">
+            <b>Подразделение:</b> {{ unit_name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 medium-6 columns">
+            <div class="panel radius">
+                <div class="large-text-center"><b>Работники:</b></div><br/>
+                <div class="row text-right">
+                <div class=" large-10 large-offset-1 medium-10 medium-offset-1 smoll-10 small-offset-1 columns">
+                {% for employee in employees %}
+                    <div class="medium-7 column">
+                    <a href="{% url 'scart' employee.id %}">{{ employee }}</a>
+                    <br/>
+                    </div>
+                    <div class="medium-5 column">
+                        {{ empoyee.hired }}
+                    </div>
+                {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="large-6 medium-6 columns">
+            <div class="panel radius">
+                <div class="large-text-center"><b>Больше информации</b></div>
+                <br/>
+            </div>
+        </div>
+    </div>
+{% endblock %}

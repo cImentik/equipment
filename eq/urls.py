@@ -21,9 +21,11 @@ urlpatterns = patterns('',
     url(r'^addeq/', views.addeq, name='addeq'),
     url(r'^staff/', views.staff, name='staff'),
     url(r'^addunit/', views.addunit, name='addunit'),
-    url(r'^delunit/(?P<unit_id>\d+)/', views.addunit, name='delunit'),
-    url(r'^editunit/(?P<unit_id>\d+)/', views.addunit, name='editunit'),
+    url(r'^delunit/(?P<unit_id>\d+)/', views.delunit, name='delunit'),
+    url(r'^editunit/(?P<unit_id>\d+)/', views.editunit, name='editunit'),
     url(r'^unit/(?P<unit_id>\d+)/', views.unit, name='unit'),
+    url(r'^sunit/(?P<unit_id>\d+)/', views.sunit, name='sunit'),
+    url(r'^scart/(?P<empl_id>\d+)/', views.scart, name='scart'),
     #delempl
     #editempl
 )
