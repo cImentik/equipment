@@ -9,11 +9,11 @@ conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
 
 with open('spravph.csv', newline='') as csvfile:
-    sreader = csv.reader(csvfile, delimiter=';')
+    sreader = csv.reader(csvfile, delimiter='%')
     for row in sreader:
-        c.execute("INSERT INTO t_table VALUES ('%s')" % row[1])
+        c.execute("INSERT INTO t_table VALUES ('%s')" % row[3])
         conn.commit()
-        #print(row[1])
+        #print(row[3])
 
 conn.close()
 
